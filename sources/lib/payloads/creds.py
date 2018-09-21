@@ -1,0 +1,5 @@
+creds = \
+    {
+        'username': '',
+        'password': ''
+    }

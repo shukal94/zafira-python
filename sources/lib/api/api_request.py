@@ -77,6 +77,23 @@ class ApiRequest:
         return requests.request(self.__method, self.__url, data=data, cookies=cookies).json()
 
 
+def _prepare_data(payload):
+    """
+    Prepares data for requests
+    :param payload: some data from dto
+    :return: prepared data for request
+    """
+    pass
+
+def _prepare_cookies(payload):
+    """
+    Prepares cookies for requests
+    :param payload: some auth data
+    :return: prepared cookie for request
+    """
+    pass
+
+
 
 
 
