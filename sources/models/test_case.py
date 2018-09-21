@@ -15,7 +15,7 @@ class TestCase(BaseType):
 
     @property
     def id(self):
-        return self.id
+        return self.__id
 
     @property
     def test_class(self):
