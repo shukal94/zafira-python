@@ -1,21 +1,20 @@
 import json
 
 
-def encode(filename, data):
+def encode(dict):
     """
-    Dumps python dict object to an json file.
+    Dumps python dict object to an json string.
     Uses in requests
-    :param filename: name of payload file
-    :param data: dict to write
+    :param dict to convert
+    :return: json str for request
     """
-    with open(filename, 'w') as fp:
-        json.dump(data, fp)
+    return json.dumps(dict)
 
 
 def decode(json_str):
     """
     Converts json response to a python dict object
-    :param filename: name of payload file
+    :param json_str: response body in json format
     :return: dict with response data
     """
     return json.loads(json_str)
