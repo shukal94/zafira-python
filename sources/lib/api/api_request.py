@@ -20,10 +20,6 @@ class ApiRequest:
         self.__access_token = access_token
         self.__creds = Creds()
         self.__project = ''
-        self.__http_request = None
-        self.__http_response = None
-        self.__data = {}
-        self.__cookie = {}
 
     @property
     def url(self):
@@ -70,29 +66,17 @@ class ApiRequest:
     def project(self, project):
         self.__project = project
 
-    def execute(self, method, url, data=None, cookie=None):
+    def execute(self, data=None, cookies=None):
         """
         Basic executor for http request to target url
-        :param method: GET, POST, PUT or DELETE
-        :param url: target url, base + endpoint
-        :param cookie: authorization token by default is null (f.e. for login)
+        :param cookies: authorization token by default is null (f.e. for login)
         :param data: user data
         :return: response body in json format
         """
-        pass
+        #TODO: add data and cookie preparation
+        return requests.request(self.__method, self.__url, data=data, cookies=cookies).json()
 
 
-if __name__ == '__main__':
-    reqest = ApiRequest('sdds')
-    reqest.url = 'fdfddfdf'
-    print(reqest.content)
-    creds = Creds()
-    creds.username = 'aaa'
-    creds.password = 'bbb'
-
-
-    reqest.creds = creds
-    print(reqest.creds)
 
 
 
