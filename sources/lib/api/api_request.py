@@ -18,8 +18,6 @@ class ApiRequest:
         self.__url = url
         self.__method = method
         self.__access_token = access_token
-        self.__creds = Creds()
-        self.__project = ''
 
     @property
     def url(self):
@@ -49,50 +47,21 @@ class ApiRequest:
     def content(self):
         return 'application/json'
 
-    @property
-    def creds(self):
-        return self.__creds
-
-    @creds.setter
-    def creds(self, creds):
-        self.__creds.username = creds.username
-        self.__creds.password = creds.password
-
-    @property
-    def project(self):
-        return self.__project
-
-    @project.setter
-    def project(self, project):
-        self.__project = project
-
-    def execute(self, data=None, cookies=None):
+    def execute(self, json=None, cookies=None):
         """
         Basic executor for http request to target url
         :param cookies: authorization token by default is null (f.e. for login)
-        :param data: user data
+        :param json: user data
         :return: response body in json format
         """
-        #TODO: add data and cookie preparation
-        return requests.request(self.__method, self.__url, data=data, cookies=cookies).json()
+        return requests.request(self.__method, self.__url, json=json, cookies=cookies)
 
 
-def _prepare_data(payload):
-    """
-    Prepares data for requests
-    :param payload: some data from dto
-    :return: prepared data for request
-    """
-    pass
-
-def _prepare_cookies(payload):
-    """
-    Prepares cookies for requests
-    :param payload: some auth data
-    :return: prepared cookie for request
-    """
-    pass
-
+if __name__ == '__main__':
+    req = ApiRequest('http://demo.qaprosoft.com/zafira-ws/api/auth/login', 'POST')
+    creds = Creds('admin', 'changeit')
+    resp = req.execute(json=creds.__dict__)
+    print(resp.json())
 
 
 
