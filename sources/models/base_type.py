@@ -5,6 +5,8 @@ class BaseType:
     def __init__(self, id):
         self.__id = id
 
-    @property
-    def id(self):
-        return self.__id
+    def get_id(self):
+        return self.id
+
+    def set_id(self, id):
+        self.id = id

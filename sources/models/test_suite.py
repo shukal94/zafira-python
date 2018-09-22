@@ -2,49 +2,47 @@ from .base_type import BaseType
 
 
 class TestSuite(BaseType):
-    """
-    Stores info about a state of test suite
-    """
-    def __init__(self, id, name, filename, description, user_id):
+
+
+    def __init__(self, id, description, fileName, name, userId):
         BaseType.__init__(self, id)
-        self.__name = name
-        self.__filename = filename
-        self.__description = description
-        self.__user_id = user_id
+        self.description = description
+        self.fileName = fileName
+        self.name = name
+        self.userId = userId
 
-    @property
-    def id(self):
-        return self.__id
+    def __init__(self, description, fileName, name, userId):
+        self.description = description
+        self.fileName = fileName
+        self.name = name
+        self.userId = userId
 
-    @property
-    def name(self):
-        return self.__name
+    def __init__(self, fileName, name, userId):
+        self.fileName = fileName
+        self.name = name
+        self.userId = userId
 
-    @name.setter
-    def name(self, name):
-        self.__name = name
 
-    @property
-    def filename(self):
-        return self.__filename
+    def get_description(self):
+        return self.description
 
-    @filename.setter
-    def filename(self, filename):
-        self.__filename = filename
+    def get_filename(self):
+        return self.fileName
 
-    @property
-    def description(self):
-        return self.__description
+    def get_name(self):
+        return self.name
 
-    @description.setter
-    def description(self, description):
-        self.__description = description
+    def get_user_id(self):
+        return self.user_id
 
-    @property
-    def user_id(self):
-        return self.__user_id
+    def set_description(self, description):
+        self.description = description
 
-    @user_id.setter
-    def user_id(self, user_id):
-        self.__user_id = user_id
+    def set_filename(self, fileName):
+        self.fileName = fileName
 
+    def set_name(self, name):
+        self.name = name
+
+    def set_userId(self, userId):
+        self.userId = userId
