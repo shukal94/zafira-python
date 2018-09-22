@@ -7,24 +7,26 @@ class Creds:
         """
         Default constructor for an empty state of creds
         """
-        self._username = ''
-        self._password = ''
+        self.username
+        self.password
 
-    @property
-    def username(self):
-        return self._username
+    def __init__(self, username, password):
+        self.username = username
+        self.password = password
 
-    @username.setter
-    def username(self, username):
-        self._username = username
+    def get_username(self):
+        return self.username
 
-    @property
-    def password(self):
-        return self._password
 
-    @password.setter
-    def password(self, password):
-        self._password = password
+    def set_username(self, username):
+        self.username = username
+
+    def get_password(self):
+        return self.password
+
+
+    def set_password(self, password):
+        self.password = password
 
     def __repr__(self):
-        return 'User: ' + self._username + ',\nPassword: ' + self._password
+        return 'User: ' + self.username + ',\nPassword: ' + self.password
