@@ -1,4 +1,4 @@
-class Creds:
+class User:
     """
     Stores a user credentials
     """
@@ -9,6 +9,16 @@ class Creds:
         """
         self.username
         self.password
+        self.email
+        self.firstName
+        self.lastName
+        self.photoURL
+        self.groups
+        self.preferences
+        self.lastLogin
+        self.tenant
+        self.source
+        self.status
 
     def __init__(self, username, password):
         self.username = username

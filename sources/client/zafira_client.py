@@ -1,11 +1,13 @@
 import requests
-from sources.models.creds import Creds
+from sources.models.user import User
 from sources.models.enums import TestStatus
 from sources.models.job import Job
 from sources.models.test import Test
 from sources.models.test_case import TestCase
 from sources.models.test_suite import TestSuite
 from sources.models.testrun import TestRun
+import time
+
 
 login_path = "/api/auth/login"
 test_suites_path = "/api/tests/suites"
@@ -131,7 +133,7 @@ class ZafiraClient:
 
 
 
-user = Creds('qpsdemo', 'qpsdemo')
+user = User('qpsdemo', 'qpsdemo')
 test_suite = TestSuite("h1z", "ASAP - smoke Tests", "1")
 
 zc = ZafiraClient()
@@ -155,15 +157,20 @@ test_run_id = response_test_run.json()['id']
 
 test = Test("For finish new1", str(test_run_id), str(1))
 
-
-
 response_test = zc.start_test(test)
 test_id = response_test.json()['id']
+time.sleep(5)
+
 
 test.set_id(test_id)
 test.set_status(TestStatus.PASSED.value)
+test.set_finishTime(round(time.time() * 1000))
 zc.finish_test(test)
-test.set_status(TestStatus.SKIPPED.value)
-zc.update_test(test)
+# test.set_status(TestStatus.SKIPPED.value)
+# zc.update_test(test)
+#
+# zc.finish_testrun(test_run_id)
 
-zc.finish_testrun(test_run_id)
+
+test.set_id()
+
