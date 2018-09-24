@@ -3,20 +3,6 @@ from .base_type import BaseType
 
 class TestSuite(BaseType):
 
-
-    def __init__(self, id, description, fileName, name, userId):
-        BaseType.__init__(self, id)
-        self.description = description
-        self.fileName = fileName
-        self.name = name
-        self.userId = userId
-
-    def __init__(self, description, fileName, name, userId):
-        self.description = description
-        self.fileName = fileName
-        self.name = name
-        self.userId = userId
-
     def __init__(self, fileName, name, userId):
         self.fileName = fileName
         self.name = name
