@@ -1,4 +1,4 @@
-from sources.lib.dto import DTO
+from sources.dto import DTO
 
 
 class Job:

@@ -1,5 +1,5 @@
 from sources.models.enums import Initiator, DriverMode
-from sources.lib.dto import DTO
+from sources.dto import DTO
 
 
 class TestRun:

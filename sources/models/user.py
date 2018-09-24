@@ -1,4 +1,4 @@
-from sources.lib.dto import DTO
+from sources.dto import DTO
 
 
 class User:
@@ -11,6 +11,10 @@ class User:
 
         self.__dto = DTO(username=self.__username,
                          password=self.__password)
+
+    @property
+    def dto(self):
+        return self.__dto
 
     @property
     def username(self):
