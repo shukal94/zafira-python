@@ -15,3 +15,4 @@ class Job(BaseType):
         self.jobURL = jobURL
         self.jenkinsHost = jenkinsHost
         self.userId = userId
+        

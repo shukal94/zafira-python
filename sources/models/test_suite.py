@@ -1,5 +1,6 @@
 from .base_type import BaseType
 
+
 class TestSuite(BaseType):
 
 
