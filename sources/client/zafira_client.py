@@ -156,7 +156,7 @@ response_test_run = zc.create_testrun(test_run)
 test_run_id = response_test_run.json()['id']
 
 test = Test("For finish new1", str(test_run_id), str(1))
-
+test.set_startTime(round(time.time() * 1000))
 response_test = zc.start_test(test)
 test_id = response_test.json()['id']
 time.sleep(5)

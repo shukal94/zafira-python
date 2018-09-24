@@ -32,7 +32,6 @@ class Test(BaseType):
         self.name = name
         self.testRunId = testRunId
         self.testCaseId = testCaseId
-        self.startTime = self.get_current_time()
 
     def set_status(self, status):
         self.status = status
