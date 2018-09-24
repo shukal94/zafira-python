@@ -1,5 +1,5 @@
 import requests
-from sources.models.creds import Creds
+from sources.models.user import Creds
 
 
 class ApiRequest:
