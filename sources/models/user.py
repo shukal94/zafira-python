@@ -1,40 +1,30 @@
+from sources.lib.dto import DTO
+
+
 class User:
     """
     Stores a user credentials
     """
-
-    def __init__(self):
-        """
-        Default constructor for an empty state of creds
-        """
-        self.username
-        self.password
-        self.email
-        self.firstName
-        self.lastName
-        self.photoURL
-        self.groups
-        self.preferences
-        self.lastLogin
-        self.tenant
-        self.source
-        self.status
-
     def __init__(self, username, password):
-        self.username = username
-        self.password = password
+        self.__username = username
+        self.__password = password
 
-    def get_username(self):
-        return self.username
+        self.__dto = DTO(username=self.__username,
+                         password=self.__password)
 
+    @property
+    def username(self):
+        return self.__username
 
-    def set_username(self, username):
-        self.username = username
+    @username.setter
+    def username(self, username):
+        self.__username = username
 
-    def get_password(self):
-        return self.password
+    @property
+    def password(self):
+        return self.__password
 
-
-    def set_password(self, password):
-        self.password = password
+    @password.setter
+    def password(self, password):
+        self.__password = password
 

@@ -1,9 +1,9 @@
 from sources.lib.dto import DTO
-
+from sources.models.testartifact import TestArtifact
 
 class Test:
 
-    def __init__(self, id, name, test_run_id, test_case_id, status, start_time, finish_time):
+    def __init__(self, id, name, test_run_id, test_case_id, status, test_artifacts, start_time, finish_time):
         self.__id = id
         self.__name = name
         self.__test_run_id = test_run_id
@@ -11,6 +11,7 @@ class Test:
         self.__status = status
         self.__start_time = start_time
         self.__finish_time = finish_time
+        self.__artifact = {artifact for artifact in test_artifacts}
 
         self.__dto = DTO(id=self.__id,
                          name=self.__name,
