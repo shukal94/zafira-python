@@ -3,16 +3,22 @@ from sources.lib.dto import DTO
 
 class Test:
 
-    def __init__(self, id, name, test_run_id, test_case_id):
+    def __init__(self, id, name, test_run_id, test_case_id, status, start_time, finish_time):
         self.__id = id
         self.__name = name
         self.__test_run_id = test_run_id
         self.__test_case_id = test_case_id
+        self.__status = status
+        self.__start_time = start_time
+        self.__finish_time = finish_time
 
         self.__dto = DTO(id=self.__id,
                          name=self.__name,
                          testRunId=self.__test_run_id,
-                         test_case_id=self.__test_case_id)
+                         test_case_id=self.__test_case_id,
+                         status=self.__status,
+                         startTime=self.__start_time,
+                         finishTime=self.__finish_time)
 
     @property
     def dto(self):
@@ -49,3 +55,27 @@ class Test:
     @name.setter
     def name(self, name):
         self.__name = name
+
+    @property
+    def status(self):
+        return self.__status
+
+    @status.setter
+    def status(self, status):
+        self.__status = status
+
+    @property
+    def start_time(self):
+        return self.__start_time
+
+    @start_time.setter
+    def start_time(self, start_time):
+        self.__start_time = start_time
+
+    @property
+    def finish_time(self):
+        return self.__finish_time
+
+    @finish_time.setter
+    def finish_time(self, finish_time):
+        self.__finish_time = finish_time
