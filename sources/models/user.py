@@ -38,5 +38,3 @@ class User:
     def set_password(self, password):
         self.password = password
 
-    def __repr__(self):
-        return 'User: ' + self.username + ',\nPassword: ' + self.password

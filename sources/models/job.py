@@ -9,10 +9,3 @@ class Job(BaseType):
         self.jobURL = jobURL
         self.jenkinsHost = jenkinsHost
         self.userId = userId
-
-    def __init__(self, name, jobURL, jenkinsHost, userId):
-        self.name = name
-        self.jobURL = jobURL
-        self.jenkinsHost = jenkinsHost
-        self.userId = userId
-        

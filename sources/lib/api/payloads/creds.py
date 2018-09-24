@@ -1,5 +1,0 @@
-creds = \
-    {
-        'username': '',
-        'password': ''
-    }

@@ -1,10 +1,10 @@
 import requests
-from sources.models.user import User
+import sources.models.user
 from sources.models.enums import TestStatus
 from sources.models.job import Job
-from sources.models.test import Test
-from sources.models.test_case import TestCase
-from sources.models.test_suite import TestSuite
+from sources.models.testitem import Test
+from sources.models.testcase import TestCase
+from sources.models.testsuite import TestSuite
 from sources.models.testrun import TestRun
 import time
 
