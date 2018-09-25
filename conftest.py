@@ -68,9 +68,11 @@ def pytest_runtest_logreport(report):
         elif report.outcome == 'failed':
             test.set_status(TestStatus.FAILED.value)
         # add logs for each test
-        test_report_file = os.path.abspath(os.path.join(os.path.dirname(__file__), 'pytest_report.log'))
+        test_report_file = os.path.abspath(os.path.join(os.path.dirname(__file__), test.name + '.log'))
         with open(test_report_file, 'w') as infile:
-            infile.write(report.caplog)
+            for line in report.caplog:
+                infile.write(line)
+                infile.write('\n')
 
 
 @pytest.hookimpl
