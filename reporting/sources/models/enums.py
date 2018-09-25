@@ -15,6 +15,7 @@ class Initiator(enum.Enum):
     UPSTREAM_JOB = 'UPSTREAM_JOB'
     HUMAN = 'HUMAN'
 
+
 class DriverMode(enum.Enum):
     METHOD_MODE = "METHOD_MODE"
     CLASS_MODE = "CLASS_MODE"

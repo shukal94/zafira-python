@@ -1,10 +1,9 @@
-from sources.dto import DTO
+from reporting.sources.dto import DTO
 
 
 class Test:
 
-    def __init__(self, id, name, test_run_id, test_case_id, test_artifacts=None,
-                 start_time='', finish_time='', status='UNKNOWN'):
+    def __init__(self, id, name, test_run_id, test_case_id, start_time, finish_time, status):
         self.__id = id
         self.__name = name
         self.__test_run_id = test_run_id
@@ -12,12 +11,11 @@ class Test:
         self.__status = status
         self.__start_time = start_time
         self.__finish_time = finish_time
-        self.__artifact = {artifact for artifact in test_artifacts}
 
         self.__dto = DTO(id=self.__id,
                          name=self.__name,
                          testRunId=self.__test_run_id,
-                         test_case_id=self.__test_case_id,
+                         testCaseId=self.__test_case_id,
                          status=self.__status,
                          startTime=self.__start_time,
                          finishTime=self.__finish_time)
@@ -72,6 +70,8 @@ class Test:
 
     @start_time.setter
     def start_time(self, start_time):
+        if start_time < 1:
+            self.__start_time = 0
         self.__start_time = start_time
 
     @property
@@ -80,4 +80,6 @@ class Test:
 
     @finish_time.setter
     def finish_time(self, finish_time):
+        if finish_time < 1:
+            self.__finish_time = 0
         self.__finish_time = finish_time

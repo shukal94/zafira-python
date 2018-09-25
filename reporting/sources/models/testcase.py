@@ -1,4 +1,4 @@
-from sources.dto import DTO
+from reporting.sources.dto import DTO
 
 
 class TestCase:

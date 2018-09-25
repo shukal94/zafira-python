@@ -1,14 +1,18 @@
 import time
 import pytest
 import os
-from .sources.zafira_client import ZafiraClient
-from sources.models.enums import TestStatus
-from sources.models.job import Job
-from sources.models.testitem import Test
-from sources.models.testcase import TestCase
-from sources.models.testsuite import TestSuite
-from sources.models.testrun import TestRun
-from sources.models.user import User
+from reporting.sources.zafira_client import ZafiraClient
+from reporting.sources.models.enums import TestStatus
+from reporting.sources.models.job import Job
+from reporting.sources.models.testitem import Test
+from reporting.sources.models.testcase import TestCase
+from reporting.sources.models.testsuite import TestSuite
+from reporting.sources.models.testrun import TestRun
+from reporting.sources.models.user import User
+from reporting.sources.models.testartifact import TestArtifact
+
+import random
+from selenium import webdriver
 
 zc = ZafiraClient("http://localhost:8080/zafira-ws")
 test_suite_id = None
@@ -17,25 +21,27 @@ job_id = None
 test_run_id = None
 test_id = None
 test = None
-log_path = os.getcwd() + '/logs'
+path_to_logs = os.getcwd() + '/reporting/logs/'
+test_artifact = None
+
 
 
 @pytest.hookimpl
 def pytest_sessionstart(session):
     user = User('qpsdemo', 'qpsdemo')
-    test_suite = TestSuite(0, "h1z", "ASAP - smoke Tests", "1")
+    test_suite = TestSuite(0, 'h1z', session.name, '1')
     zc.token = zc.login(user).json()['accessToken']
     response_test_suite = zc.create_test_suite(test_suite)
     test_suite_id = response_test_suite.json()['id']
-    test_case = TestCase(0, "testClass2", "methodName", test_suite_id, "1")
+    test_case = TestCase(0, 'testClass2', 'methodName', test_suite_id, '1')
     response_test_case = zc.create_test_case(test_case)
     global test_case_id
     test_case_id = response_test_case.json()['id']
-    job = Job(5, session.name, 'jobUrl', 'jenkinsHo1eqst', '1')
+    job = Job(0, session.name, 'jobUrl', 'jenkinsHo1eqst', '1')
     response_job = zc.create_job(job)
     global job_id
     job_id = response_job.json()['id']
-    test_run = TestRun(9, test_suite_id, job_id, 1)
+    test_run = TestRun(0, test_suite_id, job_id, 1)
     response_test_run = zc.create_testrun(test_run)
     global test_run_id
     test_run_id = response_test_run.json()['id']
@@ -44,13 +50,13 @@ def pytest_sessionstart(session):
 @pytest.hookimpl
 def pytest_runtest_call(item):
     global test
-    test = Test(2, "For finish new1", str(test_run_id), str(1))
-    test.start_time(round(time.time() * 1000))
-    test.name(item.name)
+    test = Test(0, item.name, str(test_run_id), str(1), 0, 0, 'UNKNOWN')
+    test.start_time = round(time.time() * 1000)
+    test.name = item.name
     response_test = zc.start_test(test)
     global test_id
     test_id = response_test.json()['id']
-    test.id(test_id)
+    test.id = test_id
 
 
 @pytest.hookimpl
@@ -62,17 +68,20 @@ def pytest_runtest_teardown(item):
 def pytest_runtest_logreport(report):
     global test
     if report.when == 'call':
-        test.set_finishTime(round(time.time() * 1000))
+        test.finish_time = round(time.time() * 1000)
         if report.outcome == 'passed':
-            test.set_status(TestStatus.PASSED.value)
+            test.status = 'PASSED'
         elif report.outcome == 'failed':
-            test.set_status(TestStatus.FAILED.value)
-        # add logs for each test
-        test_report_file = os.path.abspath(os.path.join(os.path.dirname(__file__), test.name + '.log'))
-        with open(test_report_file, 'w') as infile:
-            for line in report.caplog:
-                infile.write(line)
-                infile.write('\n')
+            test.status = 'FAILED'
+        # log result
+        path_to_write = path_to_logs + test.name + '.log'
+        with open(path_to_write, 'w') as infile:
+            infile.write(report.capstdout)
+            infile.write(report.capstderr)
+        # add artifact
+        link = 'http://locahost:8000{}'
+        test_artifact = TestArtifact(0, 'logs', link.format(path_to_write), test.id)
+        zc.add_test_artifact_to_test(test.id, test_artifact)
 
 
 @pytest.hookimpl
