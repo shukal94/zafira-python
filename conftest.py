@@ -47,7 +47,6 @@ def pytest_runtest_call(item):
     global test_run_id
     test.dto.__dict__['name'], test.dto.__dict__['startTime'], \
     test.dto.__dict__['testRunId'] = item.name, round(time.time() * 1000), test_run_id
-    print(type(test))
     global test_id
     test_id = zc.start_test(test).json()['id']
     test.id = test_id
@@ -68,7 +67,7 @@ def pytest_runtest_logreport(report):
             test.dto.__dict__['status'] = TestStatus.FAILED.value
             test.dto.__dict__['message'] = report.longreprtext
         # log result
-        path_to_write = path_to_logs + test.name + '.log'
+        path_to_write = path_to_logs + test.dto.__dict__['name'] + '.log'
         with open(path_to_write, 'w') as infile:
             infile.write(report.capstdout)
             infile.write(report.capstderr)
