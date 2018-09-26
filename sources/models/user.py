@@ -1,4 +1,7 @@
-class User:
+from zafira_client.models.base_type import BaseType
+
+
+class User(BaseType):
     """
     Stores a user credentials
     """

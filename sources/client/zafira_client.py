@@ -10,6 +10,7 @@ test_finish_path = "/api/tests/{}/finish"
 test_runs_finish_path = "/api/tests/runs/{}/finish"
 test_runs_abort_path = "/api/tests/runs/abort?id={}"
 test_by_id_path = "/api/tests/{}"
+add_test_artifact = "/api/tests/{}/artifacts"
 bearer_authorization = "Bearer "
 
 
@@ -18,7 +19,7 @@ class ZafiraClient:
 
     def __init__(self, local_url):
         self.local_url = local_url
-        self.token
+        self.token = ''
 
     def login(self, user):
         response = requests.post(self.local_url + login_path, json=user.__dict__)
@@ -118,5 +119,10 @@ class ZafiraClient:
         else:
             raise Exception()
 
-
-
+    def add_test_artifact_to_test(self, test_id, testArtifact):
+        response = requests.post((self.local_url + add_test_artifact.format(str(test_id))), json=testArtifact.__dict__,
+                                 headers={"Authorization": "Bearer " + self.token})
+        if int(response.status_code) == 200:
+            return response
+        else:
+            raise Exception()

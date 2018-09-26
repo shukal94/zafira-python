@@ -5,36 +5,26 @@ class TestArtifact(BaseType):
     """
     Stores a user data
     """
-    def __init__(self, id, name, link, test_id):
-        BaseType.__init__(self, id)
-        self.__name = name
-        self.__link = link
-        self.__test_id = test_id
+    def __init__(self, name, link, test_id):
+        self.name = name
+        self.link = link
+        self.test_id = test_id
 
-    @property
-    def id(self):
-        return self.__id
+    def get_name(self):
+        return self.name
 
-    @property
-    def name(self):
-        return self.__name
+    def set_name(self, name):
+        self.name = name
 
-    @name.setter
-    def name(self, name):
-        self.__name = name
+    def get_link(self):
+        return self.name
 
-    @property
-    def link(self):
-        return self.__link
+    def set_link(self, name):
+        self.name = name
 
-    @link.setter
-    def link(self, link):
-        self.__link = link
+    def get_test_id(self):
+        return self.test_id
 
-    @property
-    def test_id(self):
-        return self.__test_id
+    def set_test_id(self, test_id):
+        self.test_id = test_id
 
-    @test_id.setter
-    def test_id(self, test_id):
-        self.__test_id = test_id

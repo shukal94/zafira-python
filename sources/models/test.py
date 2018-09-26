@@ -1,4 +1,4 @@
-from sources.models.base_type import BaseType
+from zafira_client.models.base_type import BaseType
 
 
 class Test(BaseType):
@@ -50,3 +50,19 @@ class Test(BaseType):
 
     def get_finishTime(self):
         return self.finishTime
+
+    def set_name(self, name):
+        self.name = name
+
+    def get_name(self):
+        return self.name
+
+    def set_test_class(self, test_class):
+        self.testClass = test_class
+
+    def get_test_class(self):
+        return self.testClass
+
+    def set_artifacts(self, artifacts):
+        self.artifacts = artifacts
+

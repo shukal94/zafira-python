@@ -1,4 +1,4 @@
-from sources.models.base_type import BaseType
+from zafira_client.models.base_type import BaseType
 
 
 class Job(BaseType):
@@ -15,4 +15,3 @@ class Job(BaseType):
         self.jobURL = jobURL
         self.jenkinsHost = jenkinsHost
         self.userId = userId
-        
