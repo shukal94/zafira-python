@@ -66,3 +66,6 @@ class Test(BaseType):
     def set_artifacts(self, artifacts):
         self.artifacts = artifacts
 
+    def set_message(self, message):
+        self.message = message
+

@@ -67,13 +67,14 @@ def pytest_runtest_logreport(report):
             test.set_status(TestStatus.PASSED.value)
         elif report.outcome == 'failed':
             test.set_status(TestStatus.FAILED.value)
+            test.set_message(report.longreprtext)
 
         name = str(randint(10000, 100000))
         link = full_path_to_artifact + name
 
         with open(link, 'w') as outfile:
             outfile.write(report.capstdout)
-        test_artifact = TestArtifact(name, 'file://' + link, str(test_id))
+        test_artifact = TestArtifact('logs', 'file://' + link, str(test_id))
         zc.add_test_artifact_to_test(test_id, test_artifact)
 
 
