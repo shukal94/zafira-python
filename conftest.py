@@ -1,15 +1,17 @@
 import time
 import pytest
-from zafira_client.client.zafira_client import ZafiraClient
-from zafira_client.models.enums import TestStatus
-from zafira_client.models.job import Job
-from zafira_client.models.test import Test
-from zafira_client.models.test_artifact import TestArtifact
-from zafira_client.models.test_case import TestCase
-from zafira_client.models.test_suite import TestSuite
-from zafira_client.models.testrun import TestRun
-from zafira_client.models.user import User
+
 from random import randint
+
+from sources.client.zafira_client import ZafiraClient
+from sources.models.enums import TestStatus
+from sources.models.job import Job
+from sources.models.test import Test
+from sources.models.test_artifact import TestArtifact
+from sources.models.test_case import TestCase
+from sources.models.test_suite import TestSuite
+from sources.models.testrun import TestRun
+from sources.models.user import User
 
 zc = ZafiraClient("http://demo.qaprosoft.com/zafira-ws")
 test_suite_id = None

@@ -1,5 +1,5 @@
-from zafira_client.models.base_type import BaseType
-from zafira_client.models.enums import DriverMode, Initiator
+from sources.models.base_type import BaseType
+from sources.models.enums import DriverMode, Initiator
 
 
 class TestRun(BaseType):

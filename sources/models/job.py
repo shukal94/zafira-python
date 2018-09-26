@@ -1,4 +1,4 @@
-from zafira_client.models.base_type import BaseType
+from sources.models.base_type import BaseType
 
 
 class Job(BaseType):
