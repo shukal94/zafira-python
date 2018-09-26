@@ -8,6 +8,7 @@ class TestStatus(enum.Enum):
     FAILED = 'FAILED'
     SKIPPED = 'SKIPPED'
     ABORTED = 'ABORTED'
+    QUEUED = 'QUEUED'
 
 
 class Initiator(enum.Enum):

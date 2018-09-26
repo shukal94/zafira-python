@@ -3,7 +3,7 @@ from reporting.sources.dto import DTO
 
 class Test:
 
-    def __init__(self, id, name, test_run_id, test_case_id, start_time, finish_time, status):
+    def __init__(self, id, name, test_run_id, test_case_id, start_time, finish_time, status, message=''):
         self.__id = id
         self.__name = name
         self.__test_run_id = test_run_id
@@ -11,6 +11,7 @@ class Test:
         self.__status = status
         self.__start_time = start_time
         self.__finish_time = finish_time
+        self.__message = message
 
         self.__dto = DTO(id=self.__id,
                          name=self.__name,
@@ -18,7 +19,8 @@ class Test:
                          testCaseId=self.__test_case_id,
                          status=self.__status,
                          startTime=self.__start_time,
-                         finishTime=self.__finish_time)
+                         finishTime=self.__finish_time,
+                         message=self.__message)
 
     @property
     def dto(self):
@@ -83,3 +85,11 @@ class Test:
         if finish_time < 1:
             self.__finish_time = 0
         self.__finish_time = finish_time
+
+    @property
+    def message(self):
+        return self.__message
+
+    @message.setter
+    def message(self, message):
+        self.__message = message
