@@ -20,17 +20,18 @@ job_id = None
 test_run_id = None
 test_id = None
 test = None
+# set your local path to logs
 full_path_to_artifact = '/Users/kbugrim/Documents/projects/asap/asapp-qa/logs/'
 
 
 @pytest.hookimpl
 def pytest_sessionstart(session):
     user = User('admin', 'changeit')
-    test_suite = TestSuite("hssff1z", "ASAP - tests", "1")
+    test_suite = TestSuite("hs", "ASAP - tests", "1")
     zc.token = zc.login(user).json()['accessToken']
     response_test_suite = zc.create_test_suite(test_suite)
     test_suite_id = response_test_suite.json()['id']
-    test_case = TestCase("tessfsfgtClass2", "methfsgssgodName", test_suite_id, "1")
+    test_case = TestCase("test_class" + str(time.time()), "methfsgssgodName", test_suite_id, "1")
     response_test_case = zc.create_test_case(test_case)
     global test_case_id
     test_case_id = response_test_case.json()['id']
