@@ -2,7 +2,6 @@ import time
 import pytest
 import os
 from reporting.sources.zafira_client import ZafiraClient
-from reporting.sources.models.enums import TestStatus
 from reporting.sources.models.job import Job
 from reporting.sources.models.testitem import Test
 from reporting.sources.models.testcase import TestCase
@@ -19,7 +18,9 @@ test_case_id = 0
 job_id = 0
 test_run_id = ''
 test_id = 0
+
 path_to_logs = os.getcwd() + '/reporting/logs/'
+path_to_screenshots = path_to_logs + 'screenshots/'
 
 
 @pytest.hookimpl
@@ -61,10 +62,8 @@ def pytest_runtest_teardown(item):
 def pytest_runtest_logreport(report):
     if report.when == 'call':
         test.dto.__dict__['finishTime'] = round(time.time() * 1000)
-        if report.outcome == 'passed':
-            test.dto.__dict__['status'] = TestStatus.PASSED.value
-        elif report.outcome == 'failed':
-            test.dto.__dict__['status'] = TestStatus.FAILED.value
+        test.dto.__dict__['status'] = report.outcome.upper()
+        if test.dto.__dict__['status'] is 'FAILED':
             test.dto.__dict__['message'] = report.longreprtext
         # log result
         path_to_write = path_to_logs + test.dto.__dict__['name'] + '.log'

@@ -1,0 +1,38 @@
+18:56:21,54 [INF]: *
+18:56:21,54 [DEB]: Starting with [BOOST]:[SPEAR] on [CONTAINER]
+18:56:21,54 [INF]: ###CREATING DRIVERS: customer 0, agent 1, admin 0, agent_admin 0
+18:56:21,54 [DEB]: Setting driver for: agent
+18:56:23,84 [DEB]: Opening URL: https://qa15.test.asapp.com/login
+18:56:28,54 [INF]: ###All DRIVERS CREATED: {'agent': [<core.driver.SetUpDriver object at 0x10563e390>]}
+18:56:28,60 [INF]: Element was fnd ('id', 'text-box')
+18:56:28,67 [DEB]: Element clicked ('id', 'text-box')
+18:56:28,67 [INF]: Element was fnd ('id', 'text-box')
+18:56:28,68 [INF]: Element was fnd ('id', 'text-box')
+18:56:28,70 [DEB]: Element cleared ('id', 'text-box')
+18:56:28,77 [DEB]: Element receive [boost] ('id', 'text-box')
+18:56:28,83 [INF]: Element was fnd ('xpath', '//input[@value="GO"]')
+18:56:28,89 [DEB]: Element clicked ('xpath', '//input[@value="GO"]')
+18:56:44,99 [WAR]: Element still not clickable ('xpath', '//*[@data-test-name="settingsPanelToggleButton"]')
+18:57:00,15 [WAR]: Element not fnd ('xpath', '//*[@data-test-name="settingsPanelToggleButton"]')
+18:57:00,16 [WAR]: Element not clicked ('xpath', '//*[@data-test-name="settingsPanelToggleButton"]')
+18:57:15,32 [WAR]: Element not fnd ('xpath', '//*[contains(@id, "asapp_extended_controls_column")]')
+18:57:30,35 [WAR]: Element not fnd ('xpath', '//*[contains(@id, "asapp_extended_controls_column")]')
+18:57:45,64 [WAR]: Element still not clickable ('xpath', '//*[@data-test-name="settingsPanelToggleButton"]')
+18:58:00,70 [WAR]: Element not fnd ('xpath', '//*[@data-test-name="settingsPanelToggleButton"]')
+18:58:00,70 [WAR]: Element not clicked ('xpath', '//*[@data-test-name="settingsPanelToggleButton"]')
+18:58:16,55 [WAR]: Element not fnd ('xpath', '//*[contains(@id, "asapp_extended_controls_column")]')
+18:58:31,44 [WAR]: Element still not clickable ('xpath', '//*[@data-test-name="logOutButton"]')
+18:58:46,50 [WAR]: Element not fnd ('xpath', '//*[@data-test-name="logOutButton"]')
+18:58:46,51 [WAR]: Element not clicked ('xpath', '//*[@data-test-name="logOutButton"]')
+selenium_helpers.py        281 WARNING  ,99 [WAR]: Element still not clickable ('xpath', '//*[@data-test-name="settingsPanelToggleButton"]')
+selenium_helpers.py         32 WARNING  ,15 [WAR]: Element not fnd ('xpath', '//*[@data-test-name="settingsPanelToggleButton"]')
+selenium_helpers.py         70 WARNING  ,16 [WAR]: Element not clicked ('xpath', '//*[@data-test-name="settingsPanelToggleButton"]')
+selenium_helpers.py        236 WARNING  ,32 [WAR]: Element not fnd ('xpath', '//*[contains(@id, "asapp_extended_controls_column")]')
+selenium_helpers.py         32 WARNING  ,35 [WAR]: Element not fnd ('xpath', '//*[contains(@id, "asapp_extended_controls_column")]')
+selenium_helpers.py        281 WARNING  ,64 [WAR]: Element still not clickable ('xpath', '//*[@data-test-name="settingsPanelToggleButton"]')
+selenium_helpers.py         32 WARNING  ,70 [WAR]: Element not fnd ('xpath', '//*[@data-test-name="settingsPanelToggleButton"]')
+selenium_helpers.py         70 WARNING  ,70 [WAR]: Element not clicked ('xpath', '//*[@data-test-name="settingsPanelToggleButton"]')
+selenium_helpers.py        236 WARNING  ,55 [WAR]: Element not fnd ('xpath', '//*[contains(@id, "asapp_extended_controls_column")]')
+selenium_helpers.py        281 WARNING  ,44 [WAR]: Element still not clickable ('xpath', '//*[@data-test-name="logOutButton"]')
+selenium_helpers.py         32 WARNING  ,50 [WAR]: Element not fnd ('xpath', '//*[@data-test-name="logOutButton"]')
+selenium_helpers.py         70 WARNING  ,51 [WAR]: Element not clicked ('xpath', '//*[@data-test-name="logOutButton"]')

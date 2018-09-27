@@ -1,0 +1,30 @@
+18:52:03,44 [INF]: *
+18:52:03,44 [DEB]: Starting with [BOOST]:[SPEAR] on [CONTAINER]
+18:52:03,44 [INF]: ###CREATING DRIVERS: customer 0, agent 0, admin 1, agent_admin 0
+18:52:03,45 [DEB]: Setting driver for: admin
+18:52:05,53 [DEB]: Opening URL: https://qa15.test.asapp.com/login
+18:52:10,37 [INF]: ###All DRIVERS CREATED: {'admin': [<core.driver.SetUpDriver object at 0x10562a080>]}
+18:52:10,42 [INF]: Element was fnd ('id', 'text-box')
+18:52:10,50 [DEB]: Element clicked ('id', 'text-box')
+18:52:10,50 [INF]: Element was fnd ('id', 'text-box')
+18:52:10,51 [INF]: Element was fnd ('id', 'text-box')
+18:52:10,53 [DEB]: Element cleared ('id', 'text-box')
+18:52:10,62 [DEB]: Element receive [boost] ('id', 'text-box')
+18:52:10,69 [INF]: Element was fnd ('xpath', '//input[@value="GO"]')
+18:52:10,76 [DEB]: Element clicked ('xpath', '//input[@value="GO"]')
+18:52:11,41 [INF]: Element was fnd ('css selector', 'input[type="text"]')
+18:52:11,52 [DEB]: Element clicked ('css selector', 'input[type="text"]')
+18:52:11,53 [INF]: Element was fnd ('css selector', 'input[type="text"]')
+18:52:11,54 [INF]: Element was fnd ('css selector', 'input[type="text"]')
+18:52:11,57 [DEB]: Element cleared ('css selector', 'input[type="text"]')
+18:52:11,62 [DEB]: Element receive [11] ('css selector', 'input[type="text"]')
+18:52:11,67 [INF]: Element was fnd ('css selector', 'input[type="password"]')
+18:52:11,77 [DEB]: Element clicked ('css selector', 'input[type="password"]')
+18:52:11,78 [INF]: Element was fnd ('css selector', 'input[type="password"]')
+18:52:11,79 [INF]: Element was fnd ('css selector', 'input[type="password"]')
+18:52:11,81 [DEB]: Element cleared ('css selector', 'input[type="password"]')
+18:52:11,86 [DEB]: Element receive [123123] ('css selector', 'input[type="password"]')
+18:52:11,93 [INF]: Element was fnd ('css selector', 'input[type="submit"]')
+18:52:12,9. [DEB]: Element clicked ('css selector', 'input[type="submit"]')
+18:52:18,76 [INF]: Element was fnd ('id', 'asapp_signout_button')
+18:52:18,86 [DEB]: Element clicked ('id', 'asapp_signout_button')

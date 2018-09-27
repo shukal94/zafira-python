@@ -1,0 +1,7 @@
+18:59:24,79 [INF]: Element was fnd ('xpath', '//*[@data-test-name="settingsPanelToggleButton"]')
+18:59:29,96 [DEB]: Element clicked ('xpath', '//*[@data-test-name="settingsPanelToggleButton"]')
+18:59:30,3. [INF]: Element was fnd ('xpath', '//*[contains(@id, "asapp_extended_controls_column")]')
+18:59:30,45 [INF]: Element was fnd ('xpath', '//*[@data-test-name="logOutButton"]')
+18:59:36,12 [DEB]: Element clicked ('xpath', '//*[@data-test-name="logOutButton"]')
+18:59:54,14 [WAR]: Element not fnd ('css selector', '#appMsgBanner')
+selenium_helpers.py        236 WARNING  ,14 [WAR]: Element not fnd ('css selector', '#appMsgBanner')

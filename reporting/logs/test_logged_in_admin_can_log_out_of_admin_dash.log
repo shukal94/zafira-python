@@ -1,0 +1,30 @@
+18:50:12,4. [INF]: *
+18:50:12,4. [DEB]: Starting with [BOOST]:[SPEAR] on [CONTAINER]
+18:50:12,4. [INF]: ###CREATING DRIVERS: customer 0, agent 0, admin 1, agent_admin 0
+18:50:12,6. [DEB]: Setting driver for: admin
+18:50:14,76 [DEB]: Opening URL: https://qa15.test.asapp.com/login
+18:50:19,14 [INF]: ###All DRIVERS CREATED: {'admin': [<core.driver.SetUpDriver object at 0x10562a048>]}
+18:50:19,79 [INF]: Element was fnd ('id', 'text-box')
+18:50:19,14 [DEB]: Element clicked ('id', 'text-box')
+18:50:19,15 [INF]: Element was fnd ('id', 'text-box')
+18:50:19,16 [INF]: Element was fnd ('id', 'text-box')
+18:50:19,18 [DEB]: Element cleared ('id', 'text-box')
+18:50:19,27 [DEB]: Element receive [boost] ('id', 'text-box')
+18:50:19,34 [INF]: Element was fnd ('xpath', '//input[@value="GO"]')
+18:50:19,42 [DEB]: Element clicked ('xpath', '//input[@value="GO"]')
+18:50:20,10 [INF]: Element was fnd ('css selector', 'input[type="text"]')
+18:50:20,19 [DEB]: Element clicked ('css selector', 'input[type="text"]')
+18:50:20,20 [INF]: Element was fnd ('css selector', 'input[type="text"]')
+18:50:20,20 [INF]: Element was fnd ('css selector', 'input[type="text"]')
+18:50:20,22 [DEB]: Element cleared ('css selector', 'input[type="text"]')
+18:50:20,40 [DEB]: Element receive [boost.gmc_admin@asapp.com] ('css selector', 'input[type="text"]')
+18:50:20,44 [INF]: Element was fnd ('css selector', 'input[type="password"]')
+18:50:20,53 [DEB]: Element clicked ('css selector', 'input[type="password"]')
+18:50:20,53 [INF]: Element was fnd ('css selector', 'input[type="password"]')
+18:50:20,54 [INF]: Element was fnd ('css selector', 'input[type="password"]')
+18:50:20,56 [DEB]: Element cleared ('css selector', 'input[type="password"]')
+18:50:20,61 [DEB]: Element receive [123123] ('css selector', 'input[type="password"]')
+18:50:20,69 [INF]: Element was fnd ('css selector', 'input[type="submit"]')
+18:50:20,77 [DEB]: Element clicked ('css selector', 'input[type="submit"]')
+18:50:27,42 [INF]: Element was fnd ('id', 'asapp_signout_button')
+18:50:27,56 [DEB]: Element clicked ('id', 'asapp_signout_button')
