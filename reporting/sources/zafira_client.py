@@ -16,97 +16,109 @@ bearer_authorization = "Bearer "
 
 
 class ZafiraClient:
+    '''
+    A singleton wrapper on Zafira Client
+    '''
+    class __ZafiraClient:
+        '''
+        Zafira API connector
+        '''
+        def __init__(self, local_url):
+            self.local_url = local_url
+            self.token = ''
 
-    def __init__(self, local_url):
-        self.local_url = local_url
-        self.token = ''
+        def login(self, user):
+            response = requests.post(self.local_url + login_path, json=user.dto.__dict__)
+            if not int(response.status_code) == 200:
+                raise Exception
+            return response
 
-    def login(self, user):
-        response = requests.post(self.local_url + login_path, json=user.dto.__dict__)
-        if not int(response.status_code) == 200:
-            raise Exception
-        return response
+        def create_test_suite(self, test_suite):
+            response = requests.post(self.local_url + test_suites_path, json=test_suite.dto.__dict__,
+                                     headers={"Authorization": bearer_authorization + self.token})
 
-    def create_test_suite(self, test_suite):
-        response = requests.post(self.local_url + test_suites_path, json=test_suite.dto.__dict__,
-                                 headers={"Authorization": bearer_authorization + self.token})
+            if not int(response.status_code) == 200:
+                raise Exception
+            return response
 
-        if not int(response.status_code) == 200:
-            raise Exception
-        return response
+        def create_test_case(self, test_case):
+            response = requests.post(self.local_url + test_cases_path, json=test_case.dto.__dict__,
+                                     headers={"Authorization": bearer_authorization + self.token})
 
-    def create_test_case(self, test_case):
-        response = requests.post(self.local_url + test_cases_path, json=test_case.dto.__dict__,
-                                 headers={"Authorization": bearer_authorization + self.token})
+            if not int(response.status_code) == 200:
+                raise Exception
+            return response
 
-        if not int(response.status_code) == 200:
-            raise Exception
-        return response
+        def create_job(self, job):
+            response = requests.post(self.local_url + jobs_path, json=job.dto.__dict__,
+                                     headers={"Authorization": bearer_authorization + self.token})
 
-    def create_job(self, job):
-        response = requests.post(self.local_url + jobs_path, json=job.dto.__dict__,
-                                 headers={"Authorization": bearer_authorization + self.token})
+            if not int(response.status_code) == 200:
+                raise Exception
+            return response
 
-        if not int(response.status_code) == 200:
-            raise Exception
-        return response
+        def create_testrun(self, test_run):
+            response = requests.post(self.local_url + test_runs_path, json=test_run.dto.__dict__,
+                                     headers={"Authorization": bearer_authorization + self.token})
+            if not int(response.status_code) == 200:
+                raise Exception
+            return response
 
-    def create_testrun(self, test_run):
-        response = requests.post(self.local_url + test_runs_path, json=test_run.dto.__dict__,
-                                 headers={"Authorization": bearer_authorization + self.token})
-        if not int(response.status_code) == 200:
-            raise Exception
-        return response
+        def finish_testrun(self, id):
+            response = requests.post(self.local_url + test_runs_finish_path.format(str(id)),
+                                     headers={"Authorization": bearer_authorization + self.token})
+            if not int(response.status_code) == 200:
+                raise Exception
+            return response
 
-    def finish_testrun(self, id):
-        response = requests.post(self.local_url + test_runs_finish_path.format(str(id)),
-                                 headers={"Authorization": bearer_authorization + self.token})
-        if not int(response.status_code) == 200:
-            raise Exception
-        return response
+        def abort_testrun(self, id):
+            response = requests.post(self.local_url + test_runs_abort_path.format(str(id)),
+                                     headers={"Authorization": bearer_authorization + self.token})
+            if not int(response.status_code) == 200:
+                raise Exception
+            return response
 
-    def abort_testrun(self, id):
-        response = requests.post(self.local_url + test_runs_abort_path.format(str(id)),
-                                 headers={"Authorization": bearer_authorization + self.token})
-        if not int(response.status_code) == 200:
-            raise Exception
-        return response
+        def start_test(self, test):
+            response = requests.post((self.local_url + tests_path), json=test.dto.__dict__,
+                                     headers={"Authorization": bearer_authorization + self.token})
+            if not int(response.status_code) == 200:
+                raise Exception
+            return response
 
-    def start_test(self, test):
-        response = requests.post((self.local_url + tests_path), json=test.dto.__dict__,
-                                 headers={"Authorization": bearer_authorization + self.token})
-        if not int(response.status_code) == 200:
-            raise Exception
-        return response
+        def finish_test(self, test):
+            response = requests.post(self.local_url + test_finish_path.format(test.id), json=test.dto.__dict__,
+                                     headers={"Authorization": bearer_authorization + self.token})
+            if not int(response.status_code) == 200:
+                raise Exception
+            return response
 
-    def finish_test(self, test):
-        response = requests.post(self.local_url + test_finish_path.format(test.id), json=test.dto.__dict__,
-                                 headers={"Authorization": bearer_authorization + self.token})
-        if not int(response.status_code) == 200:
-            raise Exception
-        return response
+        def delete_test_by_id(self, id):
+            response = requests.delete((self.local_url + test_by_id_path.format(str(id))),
+                                       headers={"Authorization": bearer_authorization + self.token})
+            if not int(response.status_code) == 200:
+                raise Exception
+            return response
 
-    def delete_test_by_id(self, id):
-        response = requests.delete((self.local_url + test_by_id_path.format(str(id))),
-                                   headers={"Authorization": bearer_authorization + self.token})
-        if not int(response.status_code) == 200:
-            raise Exception
-        return response
+        def update_test(self, test):
+            response = requests.put((self.local_url + tests_path), json=test.dto.__dict__,
+                                    headers={"Authorization": bearer_authorization + self.token})
+            if not int(response.status_code) == 200:
+                raise Exception
+            return response
 
-    def update_test(self, test):
-        response = requests.put((self.local_url + tests_path), json=test.dto.__dict__,
-                                headers={"Authorization": bearer_authorization + self.token})
-        if not int(response.status_code) == 200:
-            raise Exception
-        return response
+        def add_test_artifact_to_test(self, test_id, test_artifact):
+            response = requests.post(self.local_url + test_artifact_path.format(str(test_id)),
+                            json=test_artifact.dto.__dict__, headers={"Authorization": bearer_authorization + self.token})
+            if not int(response.status_code) == 200:
+                raise Exception
+            return response
 
-    def add_test_artifact_to_test(self, test_id, test_artifact):
-        response = requests.post(self.local_url + test_artifact_path.format(str(test_id)),
-                        json=test_artifact.dto.__dict__, headers={"Authorization": bearer_authorization + self.token})
-        if not int(response.status_code) == 200:
-            raise Exception
-        return response
+    INSTANCE = None
 
+    def __new__(cls, local_url):
+        if not ZafiraClient.INSTANCE:
+            ZafiraClient.INSTANCE = ZafiraClient.__ZafiraClient(local_url)
+        return ZafiraClient.INSTANCE
 
-
-
+    def __getattr__(self, item):
+        return getattr(self.INSTANCE, item)
